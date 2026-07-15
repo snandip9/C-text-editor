@@ -11,6 +11,24 @@
 #define CTRL_KEY(k) ((k) & 0x1f)
 
 
+// this is what each line of the txt file will be saved as 
+
+typedef struct line {
+  int size;
+  char *chars;
+} line;
+
+//instead of looping everything in main fucntion we can just define the editor from the start 
+
+struct editor {
+
+	int size;
+
+	char* srcPtr = (int*)malloc(size * sizeof(int));
+
+};
+
+
 int main(int argc, char ** argv)
 
 	//initialising variables 
