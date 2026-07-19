@@ -4,29 +4,7 @@
 #include <string.h>
 #include <unistd.h>
 
-
-#include <menu.h>
-#include <panel.h>
-
-#define CTRL_KEY(k) ((k) & 0x1f)
-
-
-// this is what each line of the txt file will be saved as 
-
-typedef struct line {
-  int size;
-  char *chars;
-} line;
-
-//instead of looping everything in main fucntion we can just define the editor from the start 
-
-struct editor {
-
-	int size;
-
-	char* srcPtr = (int*)malloc(size * sizeof(int));
-
-};
+#include "utils.c"
 
 
 int main(int argc, char ** argv)
@@ -35,11 +13,8 @@ int main(int argc, char ** argv)
 {	
 	FILE *src;
 	char s[500]; // text from the file
-	int row, col;
-
-	int cursorX = 5;
-	int cursorY = 3;
 	int ch;
+
 
 	WINDOW *my_win;
 
@@ -78,7 +53,7 @@ int main(int argc, char ** argv)
 
 
 	while((ch = wgetch(my_win)) != CTRL_KEY('q'))
-	{	switch(ch)
+	{	/* switch(ch)
 		{	case KEY_LEFT:
 			    cursorX--;
 			    break;
@@ -104,7 +79,7 @@ int main(int argc, char ** argv)
 		if (cursorX > getmaxx(my_win) - 1)
 		    cursorX = getmaxx(my_win) - 1;
 		if (cursorY > getmaxy(my_win) - 1)
-		    cursorY = getmaxy(my_win) - 1;
+		    cursorY = getmaxy(my_win) - 1; */
 
 		wmove(my_win, cursorY, cursorX);
 		wrefresh(my_win);
